@@ -64,3 +64,69 @@ In [13]: del str
 In [14]: str(12)
 Out[14]: '12'
 """
+# During the inheritance only the constructor of the derived class is called.
+# Constructor of the super class has to be explicitly involed like so:
+# SuperClass.__init__(self, x, x)
+# Multilevel Inheritance
+# Multiple Ineritance
+#   Precedence class C(A, B): The variables of A will overwrite B.
+#
+
+
+class Shape(object):
+    """docstring for Shape"""
+
+    def __init__(self, x, y):
+        super(Shape, self).__init__()
+        self.x = x
+        self.y = y
+
+    def area():
+        return self.x * self.y
+
+    def perimeter():
+        return 2*(self.x + self.y)
+
+
+class Square(Shape):
+    """docstring for Square"""
+
+    def __init__(self, arg):
+        super(Square, self).__init__(arg, arg)
+        self.arg = arg
+
+# Multilevel inheritance
+
+
+class DoubleSquare(Square):
+    """docstring for DoubleSquare"""
+
+    def __init__(self, arg):
+        super(DoubleSquare, self).__init__()
+        self.arg = arg
+
+    def area():
+        return 2*super(DoubleSquare, self).__init__(arg, arg)
+
+
+# Multiple inheritance
+
+
+class Pyramid(Square, DoubleSquare):
+    """docstring for Pyramid"""
+
+    def __init__(self, arg):
+        super(Pyramid, self).__init__()
+        self.arg = arg
+
+    def area():
+        pass
+
+    def perimeter():
+        pass
+
+# Static memebers:
+# Just before the memeber.
+# Accessed using the class name
+# Single instance for the class, any number of the object.
+#
